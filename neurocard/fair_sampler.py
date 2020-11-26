@@ -142,7 +142,7 @@ def load_or_create_join_count_table(join_clauses, join_how, filename=None):
         table_info, parsed_join_clauses = get_table_info(join_clauses)
         log.info("Loading tables {}".format(", ".join(t for t in table_info)))
         data_tables = {
-            table: datasets.LoadImdb(table, use_cols=None).data
+            table: datasets.LoadTds(table, use_cols=None).data
             for table, cols in table_info.items()
         }
 
@@ -412,7 +412,7 @@ def test_job_m():
 
 def test_sampler(join_spec, batch_size=1024 * 16):
     tables = [
-        datasets.LoadImdb(t, use_cols="multi") for t in join_spec.join_tables
+        datasets.LoadTds(t, use_cols="multi") for t in join_spec.join_tables
     ]
     sampler = FairSampler(join_spec, tables, batch_size)
     print("-" * 60)

@@ -216,8 +216,85 @@ class TPC_DS(object) :
         }
 
 
+# def LoadImdb(table=None,
+#              data_dir='./datasets/job/',
+#              try_load_parsed=True,
+#              use_cols='simple'):
+#     """Loads IMDB tables with a specified set of columns.
+
+#     use_cols:
+#       simple: only movie_id join keys (JOB-light)
+#       content: + content columns (JOB-light-ranges)
+#       multi: all join keys in JOB-M
+#       full: all join keys in JOB-full
+#       None: load all columns
+
+#     Returns:
+#       A single CsvTable if 'table' is specified, else a dict of CsvTables.
+#     """
+#     assert use_cols in ['simple', 'content', 'multi', 'full', None], use_cols
+
+#     def TryLoad(table_name, filepath, use_cols, **kwargs):
+#         """Try load from previously parsed (table, columns)."""
+#         if use_cols:
+#             cols_str = '-'.join(use_cols)
+#             parsed_path = filepath[:-4] + '.{}.table'.format(cols_str)
+#         else:
+#             parsed_path = filepath[:-4] + '.table'
+#         if try_load_parsed:
+#             if os.path.exists(parsed_path):
+#                 arr = np.load(parsed_path, allow_pickle=True)
+#                 print('Loaded parsed Table from', parsed_path)
+#                 table = arr.item()
+#                 print(table)
+#                 return table
+#         table = CsvTable(
+#             table_name,
+#             filepath,
+#             cols=use_cols,
+#             **kwargs,
+#         )
+#         if try_load_parsed:
+#             np.save(open(parsed_path, 'wb'), table)
+#             print('Saved parsed Table to', parsed_path)
+#         return table
+
+#     def get_use_cols(filepath):
+#         if use_cols == 'simple':
+#             return JoinOrderBenchmark.BASE_TABLE_PRED_COLS.get(filepath, None)
+#         elif use_cols == 'content':
+#             return JoinOrderBenchmark.ContentColumns().get(filepath, None)
+#         elif use_cols == 'multi':
+#             return JoinOrderBenchmark.JOB_M_PRED_COLS.get(filepath, None)
+#         elif use_cols == 'full':
+#             return JoinOrderBenchmark.JOB_FULL_PRED_COLS.get(filepath, None)
+#         return None  # Load all.
+
+#     if table:
+#         filepath = table + '.csv'
+#         table = TryLoad(
+#             table,
+#             data_dir + filepath,
+#             use_cols=get_use_cols(filepath),
+#             type_casts={},
+#             escapechar='\\',
+#         )
+#         return table
+
+#     tables = {}
+#     for filepath in JoinOrderBenchmark.BASE_TABLE_PRED_COLS:
+#         tables[filepath[0:-4]] = TryLoad(
+#             filepath[0:-4],
+#             data_dir + filepath,
+#             use_cols=get_use_cols(filepath),
+#             type_casts={},
+#             escapechar='\\',
+#         )
+
+#     return tables
+
 def LoadImdb(table=None,
-             data_dir='./datasets/job/',
+             data_dir='./datasets/tds/',
              try_load_parsed=True,
              use_cols='simple'):
     """Loads IMDB tables with a specified set of columns.
@@ -261,13 +338,13 @@ def LoadImdb(table=None,
 
     def get_use_cols(filepath):
         if use_cols == 'simple':
-            return JoinOrderBenchmark.BASE_TABLE_PRED_COLS.get(filepath, None)
+            return TPC_DS.BASE_TABLE_PRED_COLS.get(filepath, None)
         elif use_cols == 'content':
-            return JoinOrderBenchmark.ContentColumns().get(filepath, None)
+            return TPC_DS.ContentColumns().get(filepath, None)
         elif use_cols == 'multi':
-            return JoinOrderBenchmark.JOB_M_PRED_COLS.get(filepath, None)
+            return TPC_DS.TDS_M_PRED_COLS.get(filepath, None)
         elif use_cols == 'full':
-            return JoinOrderBenchmark.JOB_FULL_PRED_COLS.get(filepath, None)
+            return TPC_DS.TDS_FULL_PRED_COLS.get(filepath, None)
         return None  # Load all.
 
     if table:
@@ -282,7 +359,7 @@ def LoadImdb(table=None,
         return table
 
     tables = {}
-    for filepath in JoinOrderBenchmark.BASE_TABLE_PRED_COLS:
+    for filepath in TPC_DS.BASE_TABLE_PRED_COLS:
         tables[filepath[0:-4]] = TryLoad(
             filepath[0:-4],
             data_dir + filepath,
@@ -292,8 +369,6 @@ def LoadImdb(table=None,
         )
 
     return tables
-
-
 def LoadTds(table=None,
              data_dir='./datasets/tds/',
              try_load_parsed=True,

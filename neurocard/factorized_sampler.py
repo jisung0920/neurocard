@@ -296,7 +296,7 @@ def main():
     loaded_tables = []
     for t in join_spec.join_tables:
         print('Loading', t)
-        table = datasets.LoadImdb(t, use_cols=config["use_cols"])
+        table = datasets.LoadTds(t, use_cols=config["use_cols"])
         table.data.info()
         loaded_tables.append(table)
 
