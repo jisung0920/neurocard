@@ -704,7 +704,7 @@ class NeuroCard(tune.Trainable):
 
     def MakeOrdering(self, table):
         fixed_ordering = None
-        if self.dataset != 'imdb' and self.special_orders <= 1:
+        if self.dataset != 'tpcds' and self.special_orders <= 1:
             fixed_ordering = list(range(len(table.columns)))
 
         if self.order is not None:
@@ -861,7 +861,7 @@ class NeuroCard(tune.Trainable):
                 'train',
                 self.model,
                 self.opt,
-                upto=self.max_steps if self.dataset == 'imdb' else None,
+                upto=self.max_steps if self.dataset == 'tpcds' else None,
                 train_data=self.train_data,
                 val_data=self.train_data,
                 batch_size=self.bs,
@@ -906,7 +906,7 @@ class NeuroCard(tune.Trainable):
                     train_data=self.train_data,
                     val_data=self.train_data,
                     batch_size=1024,
-                    upto=None if self.dataset != 'imdb' else 20,
+                    upto=None if self.dataset != 'tpcds' else 20,
                     log_every=200,
                     table_bits=self.table_bits,
                     return_losses=True,
@@ -956,13 +956,13 @@ class NeuroCard(tune.Trainable):
                 str(self.order_seed) if self.order_seed is not None else
                 '_'.join(map(str, self.fixed_ordering))[:60])
 
-        if self.dataset == 'imdb':
+        if self.dataset == 'tpcds':
             tuples_seen = self.bs * self.max_steps * self.epochs
             PATH = PATH.replace(
                 '-seed', '-{}tups-seed'.format(utils.HumanFormat(tuples_seen)))
 
             if len(self.join_tables) == 1:
-                PATH = PATH.replace('imdb',
+                PATH = PATH.replace('tpcds',
                                     'indep-{}'.format(self.join_tables[0]))
 
         torch.save(self.model.state_dict(), PATH)
@@ -1037,7 +1037,7 @@ class NeuroCard(tune.Trainable):
                 estimators = self.MakeProgressiveSamplers(
                     model,
                     self.train_data if self.factorize else self.table,
-                    do_fanout_scaling=(self.dataset == 'imdb'))
+                    do_fanout_scaling=(self.dataset == 'tpcds'))
                 if self.eval_join_sampling:  # None or an int.
                     estimators = [
                         estimators_lib.JoinSampling(self.train_data, self.table,
