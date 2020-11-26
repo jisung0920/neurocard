@@ -479,7 +479,7 @@ class NeuroCard(tune.Trainable):
         if isinstance(self.join_tables, int):
             # Hack to support training single-model tables.
             sorted_table_names = sorted(
-                list(datasets.JoinOrderBenchmark.GetJobLightJoinKeys().keys()))
+                list(datasets.TPC_DS.GetTDSLightJoinKeys().keys()))
             self.join_tables = [sorted_table_names[self.join_tables]]
 
         # Try to make all the runs the same, except for input orderings.
@@ -499,7 +499,7 @@ class NeuroCard(tune.Trainable):
             loaded_tables = []
             for t in self.join_tables:
                 print('Loading', t)
-                table = datasets.LoadImdb(t, use_cols=self.use_cols)
+                table = datasets.LoadTds(t, use_cols=self.use_cols)
                 table.data.info()
                 loaded_tables.append(table)
             if len(self.join_tables) > 1:
@@ -513,7 +513,7 @@ class NeuroCard(tune.Trainable):
                 table_primary_index = [t.name for t in loaded_tables
                                       ].index('title')
 
-                table.cardinality = datasets.JoinOrderBenchmark.GetFullOuterCardinalityOrFail(
+                table.cardinality = datasets.TPC_DS.GetFullOuterCardinalityOrFail(
                     self.join_tables)
                 self.train_data.cardinality = table.cardinality
 
@@ -523,7 +523,7 @@ class NeuroCard(tune.Trainable):
                 # Train on a single table.
                 table = loaded_tables[0]
 
-        if self.dataset != 'imdb' or len(self.join_tables) == 1:
+        if self.dataset != 'tpcds' or len(self.join_tables) == 1:
             table.data.info()
             self.train_data = self.MakeTableDataset(table)
 
@@ -613,7 +613,7 @@ class NeuroCard(tune.Trainable):
 
         self.loaded_queries = None
         self.oracle_cards = None
-        if self.dataset == 'imdb' and len(self.join_tables) > 1:
+        if self.dataset == 'tpcds' and len(self.join_tables) > 1:
             queries_job_format = utils.JobToQuery(self.queries_csv)
             self.loaded_queries, self.oracle_cards = utils.UnpackQueries(
                 self.table, queries_job_format)

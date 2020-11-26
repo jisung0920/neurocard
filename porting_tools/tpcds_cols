@@ -1,0 +1,433 @@
+ table_schema |       table_name       | col_id |       column_name        |       data_type        
+--------------+------------------------+--------+--------------------------+------------------------
+ public       | call_center            |      1 | cc_call_center_sk        | integer
+ public       | call_center            |      2 | cc_call_center_id        | character
+ public       | call_center            |      3 | cc_rec_start_date        | date
+ public       | call_center            |      4 | cc_rec_end_date          | date
+ public       | call_center            |      5 | cc_closed_date_sk        | integer
+ public       | call_center            |      6 | cc_open_date_sk          | integer
+ public       | call_center            |      7 | cc_name                  | character varying
+ public       | call_center            |      8 | cc_class                 | character varying
+ public       | call_center            |      9 | cc_employees             | integer
+ public       | call_center            |     10 | cc_sq_ft                 | integer
+ public       | call_center            |     11 | cc_hours                 | character
+ public       | call_center            |     12 | cc_manager               | character varying
+ public       | call_center            |     13 | cc_mkt_id                | integer
+ public       | call_center            |     14 | cc_mkt_class             | character
+ public       | call_center            |     15 | cc_mkt_desc              | character varying
+ public       | call_center            |     16 | cc_market_manager        | character varying
+ public       | call_center            |     17 | cc_division              | integer
+ public       | call_center            |     18 | cc_division_name         | character varying
+ public       | call_center            |     19 | cc_company               | integer
+ public       | call_center            |     20 | cc_company_name          | character
+ public       | call_center            |     21 | cc_street_number         | character
+ public       | call_center            |     22 | cc_street_name           | character varying
+ public       | call_center            |     23 | cc_street_type           | character
+ public       | call_center            |     24 | cc_suite_number          | character
+ public       | call_center            |     25 | cc_city                  | character varying
+ public       | call_center            |     26 | cc_county                | character varying
+ public       | call_center            |     27 | cc_state                 | character
+ public       | call_center            |     28 | cc_zip                   | character
+ public       | call_center            |     29 | cc_country               | character varying
+ public       | call_center            |     30 | cc_gmt_offset            | numeric
+ public       | call_center            |     31 | cc_tax_percentage        | numeric
+ public       | catalog_page           |      1 | cp_catalog_page_sk       | integer
+ public       | catalog_page           |      2 | cp_catalog_page_id       | character
+ public       | catalog_page           |      3 | cp_start_date_sk         | integer
+ public       | catalog_page           |      4 | cp_end_date_sk           | integer
+ public       | catalog_page           |      5 | cp_department            | character varying
+ public       | catalog_page           |      6 | cp_catalog_number        | integer
+ public       | catalog_page           |      7 | cp_catalog_page_number   | integer
+ public       | catalog_page           |      8 | cp_description           | character varying
+ public       | catalog_page           |      9 | cp_type                  | character varying
+ public       | catalog_returns        |      1 | cr_returned_date_sk      | integer
+ public       | catalog_returns        |      2 | cr_returned_time_sk      | integer
+ public       | catalog_returns        |      3 | cr_item_sk               | integer
+ public       | catalog_returns        |      4 | cr_refunded_customer_sk  | integer
+ public       | catalog_returns        |      5 | cr_refunded_cdemo_sk     | integer
+ public       | catalog_returns        |      6 | cr_refunded_hdemo_sk     | integer
+ public       | catalog_returns        |      7 | cr_refunded_addr_sk      | integer
+ public       | catalog_returns        |      8 | cr_returning_customer_sk | integer
+ public       | catalog_returns        |      9 | cr_returning_cdemo_sk    | integer
+ public       | catalog_returns        |     10 | cr_returning_hdemo_sk    | integer
+ public       | catalog_returns        |     11 | cr_returning_addr_sk     | integer
+ public       | catalog_returns        |     12 | cr_call_center_sk        | integer
+ public       | catalog_returns        |     13 | cr_catalog_page_sk       | integer
+ public       | catalog_returns        |     14 | cr_ship_mode_sk          | integer
+ public       | catalog_returns        |     15 | cr_warehouse_sk          | integer
+ public       | catalog_returns        |     16 | cr_reason_sk             | integer
+ public       | catalog_returns        |     17 | cr_order_number          | integer
+ public       | catalog_returns        |     18 | cr_return_quantity       | integer
+ public       | catalog_returns        |     19 | cr_return_amount         | numeric
+ public       | catalog_returns        |     20 | cr_return_tax            | numeric
+ public       | catalog_returns        |     21 | cr_return_amt_inc_tax    | numeric
+ public       | catalog_returns        |     22 | cr_fee                   | numeric
+ public       | catalog_returns        |     23 | cr_return_ship_cost      | numeric
+ public       | catalog_returns        |     24 | cr_refunded_cash         | numeric
+ public       | catalog_returns        |     25 | cr_reversed_charge       | numeric
+ public       | catalog_returns        |     26 | cr_store_credit          | numeric
+ public       | catalog_returns        |     27 | cr_net_loss              | numeric
+ public       | catalog_sales          |      1 | cs_sold_date_sk          | integer
+ public       | catalog_sales          |      2 | cs_sold_time_sk          | integer
+ public       | catalog_sales          |      3 | cs_ship_date_sk          | integer
+ public       | catalog_sales          |      4 | cs_bill_customer_sk      | integer
+ public       | catalog_sales          |      5 | cs_bill_cdemo_sk         | integer
+ public       | catalog_sales          |      6 | cs_bill_hdemo_sk         | integer
+ public       | catalog_sales          |      7 | cs_bill_addr_sk          | integer
+ public       | catalog_sales          |      8 | cs_ship_customer_sk      | integer
+ public       | catalog_sales          |      9 | cs_ship_cdemo_sk         | integer
+ public       | catalog_sales          |     10 | cs_ship_hdemo_sk         | integer
+ public       | catalog_sales          |     11 | cs_ship_addr_sk          | integer
+ public       | catalog_sales          |     12 | cs_call_center_sk        | integer
+ public       | catalog_sales          |     13 | cs_catalog_page_sk       | integer
+ public       | catalog_sales          |     14 | cs_ship_mode_sk          | integer
+ public       | catalog_sales          |     15 | cs_warehouse_sk          | integer
+ public       | catalog_sales          |     16 | cs_item_sk               | integer
+ public       | catalog_sales          |     17 | cs_promo_sk              | integer
+ public       | catalog_sales          |     18 | cs_order_number          | integer
+ public       | catalog_sales          |     19 | cs_quantity              | integer
+ public       | catalog_sales          |     20 | cs_wholesale_cost        | numeric
+ public       | catalog_sales          |     21 | cs_list_price            | numeric
+ public       | catalog_sales          |     22 | cs_sales_price           | numeric
+ public       | catalog_sales          |     23 | cs_ext_discount_amt      | numeric
+ public       | catalog_sales          |     24 | cs_ext_sales_price       | numeric
+ public       | catalog_sales          |     25 | cs_ext_wholesale_cost    | numeric
+ public       | catalog_sales          |     26 | cs_ext_list_price        | numeric
+ public       | catalog_sales          |     27 | cs_ext_tax               | numeric
+ public       | catalog_sales          |     28 | cs_coupon_amt            | numeric
+ public       | catalog_sales          |     29 | cs_ext_ship_cost         | numeric
+ public       | catalog_sales          |     30 | cs_net_paid              | numeric
+ public       | catalog_sales          |     31 | cs_net_paid_inc_tax      | numeric
+ public       | catalog_sales          |     32 | cs_net_paid_inc_ship     | numeric
+ public       | catalog_sales          |     33 | cs_net_paid_inc_ship_tax | numeric
+ public       | catalog_sales          |     34 | cs_net_profit            | numeric
+ public       | customer               |      1 | c_customer_sk            | integer
+ public       | customer               |      2 | c_customer_id            | character
+ public       | customer               |      3 | c_current_cdemo_sk       | integer
+ public       | customer               |      4 | c_current_hdemo_sk       | integer
+ public       | customer               |      5 | c_current_addr_sk        | integer
+ public       | customer               |      6 | c_first_shipto_date_sk   | integer
+ public       | customer               |      7 | c_first_sales_date_sk    | integer
+ public       | customer               |      8 | c_salutation             | character
+ public       | customer               |      9 | c_first_name             | character
+ public       | customer               |     10 | c_last_name              | character
+ public       | customer               |     11 | c_preferred_cust_flag    | character
+ public       | customer               |     12 | c_birth_day              | integer
+ public       | customer               |     13 | c_birth_month            | integer
+ public       | customer               |     14 | c_birth_year             | integer
+ public       | customer               |     15 | c_birth_country          | character varying
+ public       | customer               |     16 | c_login                  | character
+ public       | customer               |     17 | c_email_address          | character
+ public       | customer               |     18 | c_last_review_date_sk    | integer
+ public       | customer_address       |      1 | ca_address_sk            | integer
+ public       | customer_address       |      2 | ca_address_id            | character
+ public       | customer_address       |      3 | ca_street_number         | character
+ public       | customer_address       |      4 | ca_street_name           | character varying
+ public       | customer_address       |      5 | ca_street_type           | character
+ public       | customer_address       |      6 | ca_suite_number          | character
+ public       | customer_address       |      7 | ca_city                  | character varying
+ public       | customer_address       |      8 | ca_county                | character varying
+ public       | customer_address       |      9 | ca_state                 | character
+ public       | customer_address       |     10 | ca_zip                   | character
+ public       | customer_address       |     11 | ca_country               | character varying
+ public       | customer_address       |     12 | ca_gmt_offset            | numeric
+ public       | customer_address       |     13 | ca_location_type         | character
+ public       | customer_demographics  |      1 | cd_demo_sk               | integer
+ public       | customer_demographics  |      2 | cd_gender                | character
+ public       | customer_demographics  |      3 | cd_marital_status        | character
+ public       | customer_demographics  |      4 | cd_education_status      | character
+ public       | customer_demographics  |      5 | cd_purchase_estimate     | integer
+ public       | customer_demographics  |      6 | cd_credit_rating         | character
+ public       | customer_demographics  |      7 | cd_dep_count             | integer
+ public       | customer_demographics  |      8 | cd_dep_employed_count    | integer
+ public       | customer_demographics  |      9 | cd_dep_college_count     | integer
+ public       | date_dim               |      1 | d_date_sk                | integer
+ public       | date_dim               |      2 | d_date_id                | character
+ public       | date_dim               |      3 | d_date                   | date
+ public       | date_dim               |      4 | d_month_seq              | integer
+ public       | date_dim               |      5 | d_week_seq               | integer
+ public       | date_dim               |      6 | d_quarter_seq            | integer
+ public       | date_dim               |      7 | d_year                   | integer
+ public       | date_dim               |      8 | d_dow                    | integer
+ public       | date_dim               |      9 | d_moy                    | integer
+ public       | date_dim               |     10 | d_dom                    | integer
+ public       | date_dim               |     11 | d_qoy                    | integer
+ public       | date_dim               |     12 | d_fy_year                | integer
+ public       | date_dim               |     13 | d_fy_quarter_seq         | integer
+ public       | date_dim               |     14 | d_fy_week_seq            | integer
+ public       | date_dim               |     15 | d_day_name               | character
+ public       | date_dim               |     16 | d_quarter_name           | character
+ public       | date_dim               |     17 | d_holiday                | character
+ public       | date_dim               |     18 | d_weekend                | character
+ public       | date_dim               |     19 | d_following_holiday      | character
+ public       | date_dim               |     20 | d_first_dom              | integer
+ public       | date_dim               |     21 | d_last_dom               | integer
+ public       | date_dim               |     22 | d_same_day_ly            | integer
+ public       | date_dim               |     23 | d_same_day_lq            | integer
+ public       | date_dim               |     24 | d_current_day            | character
+ public       | date_dim               |     25 | d_current_week           | character
+ public       | date_dim               |     26 | d_current_month          | character
+ public       | date_dim               |     27 | d_current_quarter        | character
+ public       | date_dim               |     28 | d_current_year           | character
+ public       | dbgen_version          |      1 | dv_version               | character varying
+ public       | dbgen_version          |      2 | dv_create_date           | date
+ public       | dbgen_version          |      3 | dv_create_time           | time without time zone
+ public       | dbgen_version          |      4 | dv_cmdline_args          | character varying
+ public       | household_demographics |      1 | hd_demo_sk               | integer
+ public       | household_demographics |      2 | hd_income_band_sk        | integer
+ public       | household_demographics |      3 | hd_buy_potential         | character
+ public       | household_demographics |      4 | hd_dep_count             | integer
+ public       | household_demographics |      5 | hd_vehicle_count         | integer
+ public       | income_band            |      1 | ib_income_band_sk        | integer
+ public       | income_band            |      2 | ib_lower_bound           | integer
+ public       | income_band            |      3 | ib_upper_bound           | integer
+ public       | inventory              |      1 | inv_date_sk              | integer
+ public       | inventory              |      2 | inv_item_sk              | integer
+ public       | inventory              |      3 | inv_warehouse_sk         | integer
+ public       | inventory              |      4 | inv_quantity_on_hand     | integer
+ public       | item                   |      1 | i_item_sk                | integer
+ public       | item                   |      2 | i_item_id                | character
+ public       | item                   |      3 | i_rec_start_date         | date
+ public       | item                   |      4 | i_rec_end_date           | date
+ public       | item                   |      5 | i_item_desc              | character varying
+ public       | item                   |      6 | i_current_price          | numeric
+ public       | item                   |      7 | i_wholesale_cost         | numeric
+ public       | item                   |      8 | i_brand_id               | integer
+ public       | item                   |      9 | i_brand                  | character
+ public       | item                   |     10 | i_class_id               | integer
+ public       | item                   |     11 | i_class                  | character
+ public       | item                   |     12 | i_category_id            | integer
+ public       | item                   |     13 | i_category               | character
+ public       | item                   |     14 | i_manufact_id            | integer
+ public       | item                   |     15 | i_manufact               | character
+ public       | item                   |     16 | i_size                   | character
+ public       | item                   |     17 | i_formulation            | character
+ public       | item                   |     18 | i_color                  | character
+ public       | item                   |     19 | i_units                  | character
+ public       | item                   |     20 | i_container              | character
+ public       | item                   |     21 | i_manager_id             | integer
+ public       | item                   |     22 | i_product_name           | character
+ public       | promotion              |      1 | p_promo_sk               | integer
+ public       | promotion              |      2 | p_promo_id               | character
+ public       | promotion              |      3 | p_start_date_sk          | integer
+ public       | promotion              |      4 | p_end_date_sk            | integer
+ public       | promotion              |      5 | p_item_sk                | integer
+ public       | promotion              |      6 | p_cost                   | numeric
+ public       | promotion              |      7 | p_response_target        | integer
+ public       | promotion              |      8 | p_promo_name             | character
+ public       | promotion              |      9 | p_channel_dmail          | character
+ public       | promotion              |     10 | p_channel_email          | character
+ public       | promotion              |     11 | p_channel_catalog        | character
+ public       | promotion              |     12 | p_channel_tv             | character
+ public       | promotion              |     13 | p_channel_radio          | character
+ public       | promotion              |     14 | p_channel_press          | character
+ public       | promotion              |     15 | p_channel_event          | character
+ public       | promotion              |     16 | p_channel_demo           | character
+ public       | promotion              |     17 | p_channel_details        | character varying
+ public       | promotion              |     18 | p_purpose                | character
+ public       | promotion              |     19 | p_discount_active        | character
+ public       | reason                 |      1 | r_reason_sk              | integer
+ public       | reason                 |      2 | r_reason_id              | character
+ public       | reason                 |      3 | r_reason_desc            | character
+ public       | ship_mode              |      1 | sm_ship_mode_sk          | integer
+ public       | ship_mode              |      2 | sm_ship_mode_id          | character
+ public       | ship_mode              |      3 | sm_type                  | character
+ public       | ship_mode              |      4 | sm_code                  | character
+ public       | ship_mode              |      5 | sm_carrier               | character
+ public       | ship_mode              |      6 | sm_contract              | character
+ public       | store                  |      1 | s_store_sk               | integer
+ public       | store                  |      2 | s_store_id               | character
+ public       | store                  |      3 | s_rec_start_date         | date
+ public       | store                  |      4 | s_rec_end_date           | date
+ public       | store                  |      5 | s_closed_date_sk         | integer
+ public       | store                  |      6 | s_store_name             | character varying
+ public       | store                  |      7 | s_number_employees       | integer
+ public       | store                  |      8 | s_floor_space            | integer
+ public       | store                  |      9 | s_hours                  | character
+ public       | store                  |     10 | s_manager                | character varying
+ public       | store                  |     11 | s_market_id              | integer
+ public       | store                  |     12 | s_geography_class        | character varying
+ public       | store                  |     13 | s_market_desc            | character varying
+ public       | store                  |     14 | s_market_manager         | character varying
+ public       | store                  |     15 | s_division_id            | integer
+ public       | store                  |     16 | s_division_name          | character varying
+ public       | store                  |     17 | s_company_id             | integer
+ public       | store                  |     18 | s_company_name           | character varying
+ public       | store                  |     19 | s_street_number          | character varying
+ public       | store                  |     20 | s_street_name            | character varying
+ public       | store                  |     21 | s_street_type            | character
+ public       | store                  |     22 | s_suite_number           | character
+ public       | store                  |     23 | s_city                   | character varying
+ public       | store                  |     24 | s_county                 | character varying
+ public       | store                  |     25 | s_state                  | character
+ public       | store                  |     26 | s_zip                    | character
+ public       | store                  |     27 | s_country                | character varying
+ public       | store                  |     28 | s_gmt_offset             | numeric
+ public       | store                  |     29 | s_tax_precentage         | numeric
+ public       | store_returns          |      1 | sr_returned_date_sk      | integer
+ public       | store_returns          |      2 | sr_return_time_sk        | integer
+ public       | store_returns          |      3 | sr_item_sk               | integer
+ public       | store_returns          |      4 | sr_customer_sk           | integer
+ public       | store_returns          |      5 | sr_cdemo_sk              | integer
+ public       | store_returns          |      6 | sr_hdemo_sk              | integer
+ public       | store_returns          |      7 | sr_addr_sk               | integer
+ public       | store_returns          |      8 | sr_store_sk              | integer
+ public       | store_returns          |      9 | sr_reason_sk             | integer
+ public       | store_returns          |     10 | sr_ticket_number         | integer
+ public       | store_returns          |     11 | sr_return_quantity       | integer
+ public       | store_returns          |     12 | sr_return_amt            | numeric
+ public       | store_returns          |     13 | sr_return_tax            | numeric
+ public       | store_returns          |     14 | sr_return_amt_inc_tax    | numeric
+ public       | store_returns          |     15 | sr_fee                   | numeric
+ public       | store_returns          |     16 | sr_return_ship_cost      | numeric
+ public       | store_returns          |     17 | sr_refunded_cash         | numeric
+ public       | store_returns          |     18 | sr_reversed_charge       | numeric
+ public       | store_returns          |     19 | sr_store_credit          | numeric
+ public       | store_returns          |     20 | sr_net_loss              | numeric
+ public       | store_sales            |      1 | ss_sold_date_sk          | integer
+ public       | store_sales            |      2 | ss_sold_time_sk          | integer
+ public       | store_sales            |      3 | ss_item_sk               | integer
+ public       | store_sales            |      4 | ss_customer_sk           | integer
+ public       | store_sales            |      5 | ss_cdemo_sk              | integer
+ public       | store_sales            |      6 | ss_hdemo_sk              | integer
+ public       | store_sales            |      7 | ss_addr_sk               | integer
+ public       | store_sales            |      8 | ss_store_sk              | integer
+ public       | store_sales            |      9 | ss_promo_sk              | integer
+ public       | store_sales            |     10 | ss_ticket_number         | integer
+ public       | store_sales            |     11 | ss_quantity              | integer
+ public       | store_sales            |     12 | ss_wholesale_cost        | numeric
+ public       | store_sales            |     13 | ss_list_price            | numeric
+ public       | store_sales            |     14 | ss_sales_price           | numeric
+ public       | store_sales            |     15 | ss_ext_discount_amt      | numeric
+ public       | store_sales            |     16 | ss_ext_sales_price       | numeric
+ public       | store_sales            |     17 | ss_ext_wholesale_cost    | numeric
+ public       | store_sales            |     18 | ss_ext_list_price        | numeric
+ public       | store_sales            |     19 | ss_ext_tax               | numeric
+ public       | store_sales            |     20 | ss_coupon_amt            | numeric
+ public       | store_sales            |     21 | ss_net_paid              | numeric
+ public       | store_sales            |     22 | ss_net_paid_inc_tax      | numeric
+ public       | store_sales            |     23 | ss_net_profit            | numeric
+ public       | time_dim               |      1 | t_time_sk                | integer
+ public       | time_dim               |      2 | t_time_id                | character
+ public       | time_dim               |      3 | t_time                   | integer
+ public       | time_dim               |      4 | t_hour                   | integer
+ public       | time_dim               |      5 | t_minute                 | integer
+ public       | time_dim               |      6 | t_second                 | integer
+ public       | time_dim               |      7 | t_am_pm                  | character
+ public       | time_dim               |      8 | t_shift                  | character
+ public       | time_dim               |      9 | t_sub_shift              | character
+ public       | time_dim               |     10 | t_meal_time              | character
+ public       | warehouse              |      1 | w_warehouse_sk           | integer
+ public       | warehouse              |      2 | w_warehouse_id           | character
+ public       | warehouse              |      3 | w_warehouse_name         | character varying
+ public       | warehouse              |      4 | w_warehouse_sq_ft        | integer
+ public       | warehouse              |      5 | w_street_number          | character
+ public       | warehouse              |      6 | w_street_name            | character varying
+ public       | warehouse              |      7 | w_street_type            | character
+ public       | warehouse              |      8 | w_suite_number           | character
+ public       | warehouse              |      9 | w_city                   | character varying
+ public       | warehouse              |     10 | w_county                 | character varying
+ public       | warehouse              |     11 | w_state                  | character
+ public       | warehouse              |     12 | w_zip                    | character
+ public       | warehouse              |     13 | w_country                | character varying
+ public       | warehouse              |     14 | w_gmt_offset             | numeric
+ public       | web_page               |      1 | wp_web_page_sk           | integer
+ public       | web_page               |      2 | wp_web_page_id           | character
+ public       | web_page               |      3 | wp_rec_start_date        | date
+ public       | web_page               |      4 | wp_rec_end_date          | date
+ public       | web_page               |      5 | wp_creation_date_sk      | integer
+ public       | web_page               |      6 | wp_access_date_sk        | integer
+ public       | web_page               |      7 | wp_autogen_flag          | character
+ public       | web_page               |      8 | wp_customer_sk           | integer
+ public       | web_page               |      9 | wp_url                   | character varying
+ public       | web_page               |     10 | wp_type                  | character
+ public       | web_page               |     11 | wp_char_count            | integer
+ public       | web_page               |     12 | wp_link_count            | integer
+ public       | web_page               |     13 | wp_image_count           | integer
+ public       | web_page               |     14 | wp_max_ad_count          | integer
+ public       | web_returns            |      1 | wr_returned_date_sk      | integer
+ public       | web_returns            |      2 | wr_returned_time_sk      | integer
+ public       | web_returns            |      3 | wr_item_sk               | integer
+ public       | web_returns            |      4 | wr_refunded_customer_sk  | integer
+ public       | web_returns            |      5 | wr_refunded_cdemo_sk     | integer
+ public       | web_returns            |      6 | wr_refunded_hdemo_sk     | integer
+ public       | web_returns            |      7 | wr_refunded_addr_sk      | integer
+ public       | web_returns            |      8 | wr_returning_customer_sk | integer
+ public       | web_returns            |      9 | wr_returning_cdemo_sk    | integer
+ public       | web_returns            |     10 | wr_returning_hdemo_sk    | integer
+ public       | web_returns            |     11 | wr_returning_addr_sk     | integer
+ public       | web_returns            |     12 | wr_web_page_sk           | integer
+ public       | web_returns            |     13 | wr_reason_sk             | integer
+ public       | web_returns            |     14 | wr_order_number          | integer
+ public       | web_returns            |     15 | wr_return_quantity       | integer
+ public       | web_returns            |     16 | wr_return_amt            | numeric
+ public       | web_returns            |     17 | wr_return_tax            | numeric
+ public       | web_returns            |     18 | wr_return_amt_inc_tax    | numeric
+ public       | web_returns            |     19 | wr_fee                   | numeric
+ public       | web_returns            |     20 | wr_return_ship_cost      | numeric
+ public       | web_returns            |     21 | wr_refunded_cash         | numeric
+ public       | web_returns            |     22 | wr_reversed_charge       | numeric
+ public       | web_returns            |     23 | wr_account_credit        | numeric
+ public       | web_returns            |     24 | wr_net_loss              | numeric
+ public       | web_sales              |      1 | ws_sold_date_sk          | integer
+ public       | web_sales              |      2 | ws_sold_time_sk          | integer
+ public       | web_sales              |      3 | ws_ship_date_sk          | integer
+ public       | web_sales              |      4 | ws_item_sk               | integer
+ public       | web_sales              |      5 | ws_bill_customer_sk      | integer
+ public       | web_sales              |      6 | ws_bill_cdemo_sk         | integer
+ public       | web_sales              |      7 | ws_bill_hdemo_sk         | integer
+ public       | web_sales              |      8 | ws_bill_addr_sk          | integer
+ public       | web_sales              |      9 | ws_ship_customer_sk      | integer
+ public       | web_sales              |     10 | ws_ship_cdemo_sk         | integer
+ public       | web_sales              |     11 | ws_ship_hdemo_sk         | integer
+ public       | web_sales              |     12 | ws_ship_addr_sk          | integer
+ public       | web_sales              |     13 | ws_web_page_sk           | integer
+ public       | web_sales              |     14 | ws_web_site_sk           | integer
+ public       | web_sales              |     15 | ws_ship_mode_sk          | integer
+ public       | web_sales              |     16 | ws_warehouse_sk          | integer
+ public       | web_sales              |     17 | ws_promo_sk              | integer
+ public       | web_sales              |     18 | ws_order_number          | integer
+ public       | web_sales              |     19 | ws_quantity              | integer
+ public       | web_sales              |     20 | ws_wholesale_cost        | numeric
+ public       | web_sales              |     21 | ws_list_price            | numeric
+ public       | web_sales              |     22 | ws_sales_price           | numeric
+ public       | web_sales              |     23 | ws_ext_discount_amt      | numeric
+ public       | web_sales              |     24 | ws_ext_sales_price       | numeric
+ public       | web_sales              |     25 | ws_ext_wholesale_cost    | numeric
+ public       | web_sales              |     26 | ws_ext_list_price        | numeric
+ public       | web_sales              |     27 | ws_ext_tax               | numeric
+ public       | web_sales              |     28 | ws_coupon_amt            | numeric
+ public       | web_sales              |     29 | ws_ext_ship_cost         | numeric
+ public       | web_sales              |     30 | ws_net_paid              | numeric
+ public       | web_sales              |     31 | ws_net_paid_inc_tax      | numeric
+ public       | web_sales              |     32 | ws_net_paid_inc_ship     | numeric
+ public       | web_sales              |     33 | ws_net_paid_inc_ship_tax | numeric
+ public       | web_sales              |     34 | ws_net_profit            | numeric
+ public       | web_site               |      1 | web_site_sk              | integer
+ public       | web_site               |      2 | web_site_id              | character
+ public       | web_site               |      3 | web_rec_start_date       | date
+ public       | web_site               |      4 | web_rec_end_date         | date
+ public       | web_site               |      5 | web_name                 | character varying
+ public       | web_site               |      6 | web_open_date_sk         | integer
+ public       | web_site               |      7 | web_close_date_sk        | integer
+ public       | web_site               |      8 | web_class                | character varying
+ public       | web_site               |      9 | web_manager              | character varying
+ public       | web_site               |     10 | web_mkt_id               | integer
+ public       | web_site               |     11 | web_mkt_class            | character varying
+ public       | web_site               |     12 | web_mkt_desc             | character varying
+ public       | web_site               |     13 | web_market_manager       | character varying
+ public       | web_site               |     14 | web_company_id           | integer
+ public       | web_site               |     15 | web_company_name         | character
+ public       | web_site               |     16 | web_street_number        | character
+ public       | web_site               |     17 | web_street_name          | character varying
+ public       | web_site               |     18 | web_street_type          | character
+ public       | web_site               |     19 | web_suite_number         | character
+ public       | web_site               |     20 | web_city                 | character varying
+ public       | web_site               |     21 | web_county               | character varying
+ public       | web_site               |     22 | web_state                | character
+ public       | web_site               |     23 | web_zip                  | character
+ public       | web_site               |     24 | web_country              | character varying
+ public       | web_site               |     25 | web_gmt_offset           | numeric
+ public       | web_site               |     26 | web_tax_percentage       | numeric
+(429 rows)
+

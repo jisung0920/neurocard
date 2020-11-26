@@ -98,6 +98,92 @@ BASE_CONFIG = {
     'num_orderings': 1,
     'num_dmol': 0,
 }
+TDS_LIGHT_BASE = {
+    'dataset': 'tpcds',
+    'join_tables': [
+        'sales_store','store_returns','catalog_sales','catalog_returns',
+        'web_sales', 'web_returns', 'inventory', 'promotion', 'item'
+    ],
+
+    'join_keys': {
+
+        'item' : ['i_item_sk'],
+        'sales_store' : ['ss_item_sk'],
+        'store_returns' : ['sr_item_sk'],
+        'catalog_sales' : ['cs_item_sk'], 
+        'catalog_returns' : ['cr_item_sk'], 
+        'web_sales' : ['ws_item_sk'], 
+        'web_returns' : ['wr_item_sk'], 
+        'inventory' : ['inv_item_sk'], 
+        'promotion' : ['p_item_sk']
+    },
+    # Sampling starts at this table and traverses downwards in the join tree.
+    'join_root': 'item',
+    # Inferred.
+    'join_clauses': None,
+    'join_how': 'outer',
+    # Used for caching metadata.  Each join graph should have a unique name.
+    'join_name': 'tds-light',
+    # See datasets.py.
+    'use_cols': 'simple',
+    'seed': 0,
+    'per_row_dropout': False,
+    'table_dropout': True,
+    'embs_tied': True,
+    # Num tuples trained =
+    #   bs (batch size) * max_steps (# batches per "epoch") * epochs.
+    'epochs': 1,
+    'bs': 2048,
+    'max_steps': 500,
+    # Use this fraction of total steps as warmups.
+    'warmups': 0.05,
+    # Number of DataLoader workers that perform join sampling.
+    'loader_workers': 8,
+    # Options: factorized_sampler, fair_sampler (deprecated).
+    'sampler': 'factorized_sampler',
+    'sampler_batch_size': 1024 * 4,
+    'layers': 4,
+    # Eval:
+    'compute_test_loss': True,
+    'queries_csv': './queries/tds-light.csv',
+    'num_eval_queries_per_iteration': 0
+    'num_eval_queries_at_end': 70,
+    'eval_psamples': [4000],
+
+    # Multi-order.
+    'special_orders': 0,
+    'order_content_only': True,
+    'order_indicators_at_front': False,
+}
+TDS_M = {
+    'join_tables' : ['item'],
+    'join_keys' : {
+
+    },
+    'join_clauses' : [],
+
+
+    'join_root': 'title',
+    'join_how': 'outer',
+    'join_name': 'job-m',
+    'use_cols': 'multi',
+    'epochs': 10,
+    'bs': 1000,
+    'resmade_drop_prob': 0.1,
+    'max_steps': 1000,
+    'loader_workers': 8,
+    'sampler': 'factorized_sampler',
+    'sampler_batch_size': 1024 * 16,
+    'warmups': 0.15,
+    # Eval:
+    'compute_test_loss': False,
+    'queries_csv': './queries/job-m.csv',
+    'num_eval_queries_per_iteration': 0,
+    'num_eval_queries_at_end': 113,
+    'eval_psamples': [1000],
+
+
+}
 
 JOB_LIGHT_BASE = {
     'dataset': 'imdb',
@@ -237,6 +323,25 @@ JOB_M_FACTORIZED = {
 # $ ./run.py --run job-light
 EXPERIMENT_CONFIGS = {
     # JOB-light, NeuroCard base.
+   'tds-light': dict(
+        dict(BASE_CONFIG, **JOB_LIGHT_BASE),
+        **{
+            'factorize': True,
+            'grouped_dropout': True,
+            'loader_workers': 4,
+            'warmups': 0.05,  # Ignored.
+            'lr_scheduler': tune.grid_search(['OneCycleLR-0.28']),
+            'loader_workers': 4,
+            'max_steps': tune.grid_search([500]),
+            'epochs': 7,
+            'num_eval_queries_per_iteration': 70,
+            'input_no_emb_if_leq': False,
+            'eval_psamples': [8000],
+            'epochs_per_iteration': 1,
+            'resmade_drop_prob': tune.grid_search([.1]),
+            'label_smoothing': tune.grid_search([0]),
+            'word_size_bits': tune.grid_search([11]),
+        }),
     'job-light': dict(
         dict(BASE_CONFIG, **JOB_LIGHT_BASE),
         **{
@@ -375,6 +480,17 @@ TEST_CONFIGS['test-job-light'] = dict(
         },
     })
 
+TEST_CONFIGS['tds-light'] = dict(
+    EXPERIMENT_CONFIGS['tds-light'],
+    **{
+        # Train for a bit and checks that these metrics are reasonable.
+        'epochs': 1,
+        'asserts': {
+            'fact_psample_8000_median': 4,
+            'fact_psample_8000_p99': 50,
+            'train_bits': 80,
+        },
+    })
 TEST_CONFIGS['job-light-reload'] = dict(
     EXPERIMENT_CONFIGS['job-light'], **{
         'checkpoint_to_load': tune.grid_search([
