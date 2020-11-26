@@ -26,6 +26,57 @@ def CachedReadCsv(filepath, **kwargs):
         print('Saved parsed csv to', parsed_path)
     return df
 
+class TPC_DS(object) :
+    ALIAS_TO_TABLE_NAME = {
+        'ss' : 'store_sales',
+        'sr' : 'store_returns',
+        'cs' : 'catalog_sales',
+        'cr' : 'catalog_returns',
+        'ws' : 'web_sales',
+        'wr' : 'web_returns',
+        'inv' : 'inventory',
+        's' : 'store',
+        'cc' : 'call_center',
+        'cp' : 'catalog_page',
+        'web' : 'web_site',
+        'wp' : 'web_page',
+        'w' : 'warehouse',
+        'c' : 'customer',
+        'ca' : 'catalog_address',
+        'cd' : 'customer_demographics',
+        'd' : 'date_dim',
+        'hd' : 'houshold_demographics',
+        'i' : 'item',
+        'ib' : 'income_band',
+        'p' : 'promotion', 
+        'r' : 'reason',
+        'sm' : 'ship_mode', 
+        't' : 'time_dim',
+        # dv is not formal abbreviation in documents
+        'dv' : 'dbgen_version', 
+        
+    }
+    CATEGORICAL_COLUMNS = collections.defaultdict(list,
+        {
+
+        })
+    RANGE_COLUMNS = collections.defaultdict(
+        list,
+        {})
+
+    CSV_FILES = ['store.dat', 'inventory.dat','ship_mode.dat',
+         'income_band.dat','catalog_returns.dat','reason.dat',
+         'time_dim.dat','customer_address.dat','catalog_sales.dat',
+         'web_sales.dat','date_dim.dat','promotion.dat','web_returns.dat',
+         'call_center.dat','item.dat','catalog_page.dat','web_site.dat',
+         'customer_demographics.dat', 'household_demographics.dat',
+         'customer.dat','web_page.dat','store_sales.dat','store_returns.dat',
+         'dbgen_version.dat','warehouse.dat'
+    ]
+
+    BASE_TABLE_PRED_COLS = collections.defaultdict(
+        list,
+        {})
 
 class JoinOrderBenchmark(object):
     ALIAS_TO_TABLE_NAME = {
