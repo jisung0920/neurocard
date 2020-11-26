@@ -199,7 +199,7 @@ class TPC_DS(object) :
     @staticmethod
     def GetFullOuterCardinalityOrFail(join_tables):
         key = tuple(sorted(join_tables))
-        return JoinOrderBenchmark.TRUE_FULL_OUTER_CARDINALITY[key]
+        return TPC_DS.TRUE_FULL_OUTER_CARDINALITY[key]
 
     @staticmethod
     def GetTDSLightJoinKeys():
