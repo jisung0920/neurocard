@@ -324,7 +324,7 @@ JOB_M_FACTORIZED = {
 EXPERIMENT_CONFIGS = {
     # JOB-light, NeuroCard base.
    'tds-light': dict(
-        dict(BASE_CONFIG, **JOB_LIGHT_BASE),
+        dict(BASE_CONFIG, **TDS_LIGHT_BASE),
         **{
             'factorize': True,
             'grouped_dropout': True,

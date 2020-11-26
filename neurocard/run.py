@@ -1082,7 +1082,7 @@ if __name__ == '__main__':
 
     num_gpus = args.gpus if torch.cuda.is_available() else 0
     num_cpus = args.cpus
-    
+    print(k)
     tune.run_experiments(
         {
             k: {
