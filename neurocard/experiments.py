@@ -146,7 +146,7 @@ TDS_LIGHT_BASE = {
     # Eval:
     'compute_test_loss': True,
     'queries_csv': './queries/tds-light.csv',
-    'num_eval_queries_per_iteration': 0
+    'num_eval_queries_per_iteration': 0,
     'num_eval_queries_at_end': 70,
     'eval_psamples': [4000],
 
