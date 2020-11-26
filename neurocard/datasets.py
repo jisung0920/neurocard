@@ -177,7 +177,7 @@ class TPC_DS(object) :
                 cols = TPC_DS._CONTENT_COLS[table_name]
                 if table_name == 'item.csv':
                     cols.append('i_item_sk')
-                elif  table_name == 'sales_store.csv' : 
+                elif  table_name == 'store_sales.csv' : 
                     cols.append('ss_item_sk')
                 elif  table_name == 'store_returns.csv' : 
                     cols.append('sr_item_sk')
@@ -205,7 +205,7 @@ class TPC_DS(object) :
     def GetTDSLightJoinKeys():
         return {
             'item.csv' : 'i_item_sk',
-            'sales_store.csv' : 'ss_item_sk',
+            'store_sales.csv' : 'ss_item_sk',
             'store_returns.csv' : 'sr_item_sk',
             'catalog_sales.csv' : 'cs_item_sk', 
             'catalog_returns.csv' : 'cr_item_sk', 

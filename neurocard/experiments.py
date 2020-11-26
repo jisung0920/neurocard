@@ -101,14 +101,14 @@ BASE_CONFIG = {
 TDS_LIGHT_BASE = {
     'dataset': 'tpcds',
     'join_tables': [
-        'sales_store','store_returns','catalog_sales','catalog_returns',
+        'store_sales','store_returns','catalog_sales','catalog_returns',
         'web_sales', 'web_returns', 'inventory', 'promotion', 'item'
     ],
 
     'join_keys': {
 
         'item' : ['i_item_sk'],
-        'sales_store' : ['ss_item_sk'],
+        'store_sales' : ['ss_item_sk'],
         'store_returns' : ['sr_item_sk'],
         'catalog_sales' : ['cs_item_sk'], 
         'catalog_returns' : ['cr_item_sk'], 
