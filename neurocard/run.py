@@ -493,8 +493,8 @@ class NeuroCard(tune.Trainable):
         table_primary_index = None
 
         # New datasets should be loaded here.
-        assert self.dataset in ['imdb']
-        if self.dataset == 'imdb':
+        assert self.dataset in ['tpcds']
+        if self.dataset == 'tpcds':
             print('Training on Join({})'.format(self.join_tables))
             loaded_tables = []
             for t in self.join_tables:
