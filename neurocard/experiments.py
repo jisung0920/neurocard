@@ -177,7 +177,7 @@ TDS_M = {
     'warmups': 0.15,
     # Eval:
     'compute_test_loss': False,
-    'queries_csv': './queries/job-m.csv',
+    'queries_csv': './queries/tds-light.csv',
     'num_eval_queries_per_iteration': 0,
     'num_eval_queries_at_end': 113,
     'eval_psamples': [1000],
