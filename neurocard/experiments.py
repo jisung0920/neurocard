@@ -165,7 +165,7 @@ TDS_M = {
 
     'join_root': 'title',
     'join_how': 'outer',
-    'join_name': 'job-m',
+    'join_name': 'tds-m',
     'use_cols': 'multi',
     'epochs': 10,
     'bs': 1000,

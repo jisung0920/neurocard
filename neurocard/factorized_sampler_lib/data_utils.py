@@ -56,13 +56,35 @@ def save_result(filename, subdir=None, description="result"):
     return decorator
 
 
-def load_table(table, data_dir="datasets/job", **kwargs):
+# def load_table(table, data_dir="datasets/job", **kwargs):
+#     if table in TOY_TABLES:
+#         return TOY_TABLES[table]
+
+#     usecols = kwargs.get("usecols")
+#     if usecols == "job-m":
+#         usecols = datasets.JoinOrderBenchmark.JOB_M_PRED_COLS[f"{table}.csv"]
+#     kwargs.update({"usecols": usecols})
+#     if usecols is None:
+#         usecols = ["ALL"]
+
+#     @save_result("{}-{}.df".format(table, "-".join(usecols)),
+#                  description=f"dataframe of `{table}`")
+#     def work():
+#         print(table, kwargs)
+#         return pd.read_csv(os.path.join(data_dir, f"{table}.csv"),
+#                            escapechar="\\",
+#                            low_memory=False,
+#                            **kwargs)
+
+#     return work()
+
+def load_table(table, data_dir="datasets/tds", **kwargs):
     if table in TOY_TABLES:
         return TOY_TABLES[table]
 
     usecols = kwargs.get("usecols")
-    if usecols == "job-m":
-        usecols = datasets.JoinOrderBenchmark.JOB_M_PRED_COLS[f"{table}.csv"]
+    if usecols == "tds-m":
+        usecols = datasets.TPC_DS.TDS_M_PRED_COLS[f"{table}.csv"]
     kwargs.update({"usecols": usecols})
     if usecols is None:
         usecols = ["ALL"]
