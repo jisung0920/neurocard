@@ -159,6 +159,7 @@ class TPC_DS(object) :
 
     # For JOB-light schema.
     TRUE_FULL_OUTER_CARDINALITY = {
+        ('catalog_returns','item','store_returns') : 1800000
 
     }
     _CONTENT_COLS = None
